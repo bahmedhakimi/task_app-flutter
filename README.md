@@ -6,7 +6,7 @@ A new Flutter project with local notifications and backend using laravel  .
 
 This project is a starting point for a Flutter application.
 ## some pictures 
-<img src="https://user-images.githubusercontent.com/37004365/154082567-841ad100-d7ea-4334-8277-c6439c8aba2e.jpg" width="200" height="300">
+<img src="https://user-images.githubusercontent.com/37004365/154082567-841ad100-d7ea-4334-8277-c6439c8aba2e.jpg" width="150" height="300">
 ![Screenshot_2022-02-15-15-03-38-153_com example to_app](https://user-images.githubusercontent.com/37004365/154082567-841ad100-d7ea-4334-8277-c6439c8aba2e.jpg)
 ![Screenshot_2022-02-15-15-03-41-273_com example to_app](https://user-images.githubusercontent.com/37004365/154082603-7673d558-d3d3-4950-a80a-589dc5c87f96.jpg)
 ![Screenshot_2022-02-15-15-04-18-914_com example to_app](https://user-images.githubusercontent.com/37004365/154082612-17a56be8-e6d9-4b00-91a0-8170ce19ebf2.jpg)
