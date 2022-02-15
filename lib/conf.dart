@@ -5,9 +5,11 @@ import 'dart:convert';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
-const url = 'http://10.0.3.2:8000/api/';
+//const url = 'http://10.0.3.2:8000/api/';
+//const url = 'https://bahmedhaki.000webhostapp.com/api/';
+
 // online url using ngrok
-//const url = 'http://6125-41-105-43-1.ngrok.io/api/';
+const url = 'http://2de4-197-207-178-14.ngrok.io/api/';
 
 Map<String, String> headers(String token) {
   return {

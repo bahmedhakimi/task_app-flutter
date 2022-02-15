@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_key_in_widget_constructors, unused_local_variable
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -27,7 +25,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   final TaskController task_Controller = Get.put(TaskController());
 
   DateTime selecte_date = DateTime.now();
-  String star_time = DateFormat('hh:mm a').format(DateTime.now()).toString();
+  String start_time = DateFormat().add_Hm().format(DateTime.now()).toString();
 
   int selected_remind = 5;
   List<int> remind_list = [5, 10, 15, 20];
@@ -117,7 +115,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     ),
                     InputField(
                       title: 'Start Time',
-                      hint: star_time,
+                      hint: start_time,
                       widget: IconButton(
                         onPressed: () {
                           getTimeFromUser();
@@ -209,7 +207,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       note: note_controller.text,
       color: colors[selectedcolor],
       date: DateFormat.yMd().format(selecte_date),
-      startTime: star_time,
+      startTime: start_time,
       isCompleted: '0',
       remind: selected_remind.toString(),
       repeat: selected_repeat,
@@ -233,12 +231,18 @@ class _AddTaskPageState extends State<AddTaskPage> {
   void getTimeFromUser() async {
     TimeOfDay? timepicked = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay.fromDateTime(DateTime.now()),
+      initialTime: TimeOfDay.now(),
+      builder: (BuildContext context, Widget? child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+          child: child!,
+        );
+      },
     );
     if (timepicked != null) {
-      String formatted_time = timepicked.format(context);
       setState(() {
-        star_time = formatted_time;
+        start_time = '${timepicked.hour}:${timepicked.minute}';
+        print(start_time);
       });
     } else {
       print('enter time ');

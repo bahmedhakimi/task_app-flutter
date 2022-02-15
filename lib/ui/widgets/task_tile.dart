@@ -39,15 +39,15 @@ class TaskTile extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Positioned(
-              top: 0.9,
-              child: Text(
-                '${task.startTime.toString().split(' ')[0]}\n${task.startTime.toString().split(' ')[1]}',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black),
+            Container(
+              padding: EdgeInsets.only(top: 5,left: 5),
+              child: Positioned(
+                top: 0.9,
+                child: Text(
+                  task.startTime,
+                  textAlign: TextAlign.center,
+                  style: Themes().subheadinstyle,
+                ),
               ),
             ),
             Row(

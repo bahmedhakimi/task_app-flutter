@@ -24,11 +24,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  top: 3,
-                ),
                 decoration: BoxDecoration(
                     image: DecorationImage(
                       opacity: 0.4,
@@ -41,15 +36,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    InkWell(
-                        child: Image(
-                          color: Colors.black,
-                          width: SizeConfig.screenWidth * 0.07,
-                          height: SizeConfig.screenHeight * 0.07,
-                          alignment: Alignment.topLeft,
-                          image: AssetImage('images/back.png'),
-                        ),
-                        onTap: () => Get.back()),
+                    IconButton(
+                        alignment: Alignment.topLeft,
+                        onPressed: () => Get.back(),
+                        iconSize: 30,
+                        icon: Icon(Icons.arrow_back)),
                     Expanded(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -86,9 +77,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               ],
                             ),
                             Container(
-                              height: SizeConfig.screenHeight * 0.18,
+                              constraints: BoxConstraints(
+                                maxHeight: SizeConfig.screenHeight * 0.2,
+                                minHeight: SizeConfig.screenHeight * 0.1
+                              ),
+                              margin: EdgeInsets.all(5),
+                              //height: SizeConfig.screenHeight * 0.20,
                               padding:
-                                  EdgeInsets.only(right: 15, left: 5, top: 5),
+                                  EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(20)),
@@ -99,13 +95,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   ///  title
                                   Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceAround,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         padding: EdgeInsets.only(top: 5),
-                                        width: SizeConfig.screenWidth * 0.78,
+                                        width: SizeConfig.screenWidth * 0.75,
                                         height: SizeConfig.screenHeight * 0.08,
                                         child: Row(
                                           mainAxisAlignment:
@@ -125,11 +121,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                               width: 5,
                                             ),
                                             //title
-                                            Text(
-                                              widget.payload
-                                                  .toString()
-                                                  .split('|')[0],
-                                              style: Themes().subtitestyle,
+                                            Flexible(
+                                              child: Text(
+                                                widget.payload
+                                                    .toString()
+                                                    .split('|')[0],
+                                                softWrap: true,
+                                                style: Themes().subtitestyle,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -143,7 +142,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                               .toString()
                                               .split('|')[2],
                                           style: Themes().bodystyle,
-                                          textAlign: TextAlign.center,
+                                          softWrap: true,
+                                          textAlign: TextAlign.end,
                                         ),
                                       ),
                                     ],
@@ -152,14 +152,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   ///  description
 
                                   Flexible(
-                                    child: Container(
-                                      padding: EdgeInsets.only(left: 5),
-                                      margin:
-                                          EdgeInsets.only(left: 15, right: 2),
-                                      width: double.infinity,
-                                      child: Text(
-                                        widget.payload.toString().split('|')[1],
-                                        style: Themes().bodystyle,
+                                    child: SingleChildScrollView(
+                                      child: Container(
+                                        padding: EdgeInsets.all( 5),
+                                        margin:
+                                            EdgeInsets.only(left: 15, right: 2 ,bottom: 5),
+                                        width: double.infinity,
+                                        child: Text(
+                                          widget.payload.toString().split('|')[1],
+                                          softWrap: true,
+                                          style: Themes().bodystyle,
+                                        ),
                                       ),
                                     ),
                                   ),

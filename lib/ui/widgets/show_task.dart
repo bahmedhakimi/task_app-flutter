@@ -115,8 +115,8 @@ class _Show_TaskState extends State<Show_Task> {
                   label: 'Delete Task ',
                   ontap: () async {
                     widget.notifyHelper.cancelNotification(task);
-                    await widget.task_Controller.deletTasks(
-                        task.id!, task.isCompleted);
+                    await widget.task_Controller
+                        .deletTasks(task.id!, task.isCompleted);
                     Get.back();
                   },
                   image: 'images/delete.png'),
@@ -172,11 +172,11 @@ class _Show_TaskState extends State<Show_Task> {
                       itemBuilder: (BuildContext context, int index) {
                         Task task = widget.task_Controller.tasklist[index];
 
-                        DateTime date = DateFormat.jm().parse(task.startTime);
+                        DateTime date = DateFormat.Hm().parse(task.startTime);
 
-                        var mytime = DateFormat('hh:mm').format(date);
+                        var mytime = DateFormat('HH:mm').format(date);
                         //print(mytime.toString().split(':')[1]);
-
+                        print('---- -- $mytime');
                         widget.notifyHelper.scheduledNotification(
                             int.parse(mytime.toString().split(':')[0]),
                             int.parse(mytime.toString().split(':')[1]),

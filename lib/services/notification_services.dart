@@ -88,7 +88,8 @@ class NotifyHelper {
 
     tz.TZDateTime scheduledDate = _nextInstanceOfTenAM(
         hour, minutes, int.parse(task.remind), task.repeat, task.date);
-    print('date --- $scheduledDate'); 
+    print(hour);
+    print('date --- $scheduledDate');
     print('date tz --- ${tz.TZDateTime.now(tz.local)}');
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
