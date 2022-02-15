@@ -241,7 +241,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
     if (timepicked != null) {
       setState(() {
-        start_time = '${timepicked.hour}:${timepicked.minute}';
+        start_time = '${timepicked.hour}:${timepicked.minute<10 ? 0:''}${timepicked.minute}';
         print(start_time);
       });
     } else {
